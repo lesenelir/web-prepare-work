@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>圣杯布局</title>
+    <style>
+      body {
+        min-width: 550px;
+      }
+
+      .header {
+        text-align: center;
+        background-color: #f1f1f1;
+      }
+
+      .container {
+        padding-left: 200px;
+        padding-right: 150px;
+      }
+
+      /*1. 设置浮动，可以使得元素浮动横排*/
+      .container .column {
+        float: left;
+      }
+
+      .center {
+        background-color: #ccc;
+        width: 100%;
+      }
+
+      .left {
+        position: relative;
+        background-color: yellow;
+        width: 200px;
+        margin-left: -100%;
+        /*父级盒子的left是200px，所以要往最左侧靠*/
+        right: 200px;
+      }
+
+      .right {
+        background-color: red;
+        width: 150px;
+        margin-right: -150px;
+      }
+
+      .footer {
+        /*footer清除浮动*/
+        /*clear: both;*/
+        text-align: center;
+        background-color: #f1f1f1;
+      }
+
+      /*  手写clearfix*/
+      .clearfix:after {
+        content: '';
+        display: table;
+        clear: both;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="header">this is header</div>
+
+    <div class="container clearfix">
+      <div class="center column">this is center</div>
+      <div class="left column">this is left</div>
+      <div class="right column">this is right</div>
+    </div>
+
+    <div class="footer">this is footer</div>
+  </body>
+</html>
