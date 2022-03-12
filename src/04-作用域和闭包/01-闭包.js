@@ -1,14 +1,14 @@
-// // 1. 函数作为返回值
-// function create() {
-//   const a = 100
-//   return function () {
-//     console.log(a)
-//   }
-// }
-//
-// const fn = create()
-// const a = 200
-// fn() // 100
+// 1. 函数作为返回值
+function create() {
+  const a = 100
+  return function () {
+    console.log(a)
+  }
+}
+
+const fn = create()
+const a = 200
+fn() // 100
 
 /**
  *  预编译，产生GO对象: {fn: undefined, a: undefined, create: function}
