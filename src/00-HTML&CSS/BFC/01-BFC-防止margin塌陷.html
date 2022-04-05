@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>防止margin塌陷</title>
+
+    <style>
+      .box {
+        overflow: hidden;
+      }
+
+      p {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+        color: red;
+        margin: 100px;
+      }
+    </style>
+
+  </head>
+  <body>
+    <!--  可以为其中一个p外面包裹一层容器，为容器触发一个BFC  -->
+    <p>Header</p>
+    <div class="box">
+      <p>Bottom</p>
+    </div>
+
+  </body>
+</html>

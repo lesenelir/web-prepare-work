@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>三栏-双飞翼布局</title>
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .column {
+        float: left;
+        height: 100vh;
+      }
+
+      .middle {
+        width: 100%;
+        background-color: green;
+      }
+
+      .middle .main {
+        height: 100%;
+        margin: 0 200px 0 150px;
+      }
+
+      .left {
+        width: 150px;
+        margin-left: -100%;
+        background-color: orange;
+      }
+
+      .right {
+        width: 200px;
+        margin-left: -200px;
+        background-color: red;
+      }
+
+    </style>
+
+  </head>
+  <body>
+    <div class="box">
+      <!-- 因为中间页面要先加载，所以写HTML时，先写middle -->
+      <div class="column middle">
+        <div class="main"></div>
+      </div>
+      <div class="column left"></div>
+      <div class="column right"></div>
+    </div>
+  </body>
+</html>

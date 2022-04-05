@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>三栏设计-圣杯布局</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .box {
+        margin: 0 200px 0 150px;
+      }
+
+      .column {
+        float: left;
+        position: relative;
+        height: 100vh;
+      }
+
+      .middle {
+        width: 100%;
+        background-color: green;
+      }
+
+      .left {
+        left: -150px;
+        /*margin负值*/
+        margin-left: -100%;
+        width: 150px;
+        background-color: orange;
+      }
+
+      .right {
+        width: 200px;
+        /*先回去两百个像素*/
+        right: -200px;
+        margin-left: -200px;
+        background-color: red;
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <div class="box">
+      <!-- 因为中间页面要先加载，所以写HTML时，先写middle -->
+      <div class="column middle"></div>
+      <div class="column left"></div>
+      <div class="column right"></div>
+    </div>
+
+  </body>
+</html>

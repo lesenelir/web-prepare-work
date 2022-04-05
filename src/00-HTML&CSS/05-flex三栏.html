@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      header {
+        width: 100%;
+        background-color: pink;
+      }
+
+      main {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .center {
+        background-color: #cccccc;
+        order: 2;
+        /*分配剩余空间*/
+        flex: 1;
+      }
+      .left {
+        background-color: green;
+        order: 1;
+      }
+
+      .right {
+        background-color: orange;
+        order: 3;
+        align-self: flex-end;
+      }
+
+      footer {
+        width: 100%;
+        background-color: #0000FF;
+      }
+
+    </style>
+  </head>
+  <body>
+    <header>header</header>
+    <main>
+      <div class="center">center</div>
+      <div class="left">left</div>
+      <div class="right">right</div>
+    </main>
+    <footer>footer</footer>
+  </body>
+</html>

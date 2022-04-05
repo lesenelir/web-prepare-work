@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>BFC应用3-自适应多栏布局</title>
+    <style>
+      /*aside浮动后，main上移动，正常情况下会被覆盖*/
+      .aside {
+        width: 200px;
+        height: 400px;
+        background-color: #ff6666;
+        float: left;
+      }
+
+      .main {
+        /*可以为main右侧设置BFC，自适应两栏布局*/
+        overflow: hidden;
+        width: 400px;
+        height: 600px;
+        background-color: #ffcccc;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="aside"></div>
+    <div class="main"></div>
+  </body>
+</html>
