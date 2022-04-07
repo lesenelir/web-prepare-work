@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>防抖和节流</title>
+  </head>
+  <body>
+
+    防抖和节流：是限制函数的执行次数
+
+    1. 防抖：通过setTimeout的方式，在一定时间间隔内，将多次触发变为一次触发
+
+    2. 节流：减少一段时间的触发频率
+    <hr>
+
+    <input type="text">
+    <input type="submit" id="input">
+
+    <script>
+      let btn = document.querySelector('#input')
+      btn.addEventListener('click', debounce(submit, 2000), false)
+
+      function submit(e) {
+        console.log(e)
+      }
+
+      // 防抖
+      function debounce(fn, timer) {
+        let t = null
+        return function () {
+          let firstClick = !t
+          if (t) clearTimeout(t)
+
+          if (firstClick) {
+            fn.apply(this, arguments)
+          }
+          t = setTimeout(() => {
+            t = null
+          }, timer)
+
+        }
+      }
+
+      // 节流
+      function throttle(fn, delay) {
+        let begin = 0
+        return function () {
+          let cur = new Date().getTime()
+
+          if (cur - begin > delay) {
+            fn.apply(this, arguments)
+            begin = cur
+          }
+        }
+      }
+
+    </script>
+
+  </body>
+</html>
