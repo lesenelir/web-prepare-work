@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+
+    <script>
+
+      function getData() {
+        const xhr = new XMLHttpRequest()
+        xhr.open('GET', './data1.json')
+        xhr.send()
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+            if (xhr.status >= 200 && xhr.status < 300) {
+              const str = xhr.responseText // 得到字符串
+              const obj = JSON.parse(str)
+              console.log(obj)
+            }
+          }
+        }
+      }
+      getData()
+
+
+    </script>
+
+  </body>
+</html>

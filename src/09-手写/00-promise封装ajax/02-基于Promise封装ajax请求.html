@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+
+    <script>
+      function myAjax(url, method, data) {
+        let promise = new Promise((resolve, reject) => {
+          const xhr = new XMLHttpRequest()
+          if (method.toUpperCase() === 'GET') {
+            let paramsList = []
+            for (const key in data) {
+              paramsList.push(`${key}=${data[key]}`)
+            }
+            // 根据get请求方式对url进行拼接
+            let params = paramsList.join('&') // username=lee&age=18
+            url = url + '?' + params  // 拼接url
+            xhr.open(method, url, false) // false为异步请求
+            xhr.send()
+          }
+
+          if (method.toUpperCase() === 'POST') {
+            // 设置请求参数格式类型(post请求必须设置)
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+            xhr.open(method, url, false)
+            xhr.send(data)
+          }
+
+          xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+              if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
+                resolve(xhr.response)
+              } else {
+                reject(new Error('error'))
+              }
+            }
+          }
+
+        })
+
+        return promise
+      }
+
+      myAjax('./data1', 'GET').then(value => {
+        console.log(value)
+      })
+
+
+      /**
+       * let arr = ['username=lee', 'age=18']
+       * console.log(arr.join('&')) // 将数组中的元素通过&标识符进行字符串的拼接
+       */
+
+
+    </script>
+
+  </body>
+</html>
