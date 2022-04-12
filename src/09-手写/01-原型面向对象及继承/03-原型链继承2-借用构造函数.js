@@ -5,6 +5,7 @@ function Super() {
 }
 
 function Sub() {
+  // 使用call重新制定this指向，不指定为window
   Super.call(this) // 拿的是构造函数的自身成员属性
 }
 
