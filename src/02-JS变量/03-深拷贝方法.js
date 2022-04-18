@@ -8,12 +8,16 @@
 //  2. 正则无法拷贝
 //  3. undefined无法拷贝
 let obj1 = {
-  a: 1
+  a: 1,
+  b: {
+    x: 11
+  }
 }
 
 let obj2 = JSON.parse(JSON.stringify(obj1))
 
-obj1.a = 2
+obj1.a = 2 // 修改原来的属性值，不会影响到新的属性值
+obj1.b.x = 22 // JSON 方法可以进行深层次的拷贝
 
 console.log(obj2)
 
@@ -40,7 +44,7 @@ console.log(obj4)
 
 
 // ------------------------------
-// 手写深拷贝
+// 手写深拷贝 
 let person = {
   name: 'lesenelir',
   age: 18,

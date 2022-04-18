@@ -1,5 +1,4 @@
 
-
 // 数组扁平化 - 方法1 使用for 循环
 function flatten(arr) {
   let res = []
