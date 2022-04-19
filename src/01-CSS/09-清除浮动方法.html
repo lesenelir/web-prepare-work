@@ -22,9 +22,15 @@
       /* 2. 手写clearfix 伪元素*/
       .clearfix::after {
         content: '';
+        height: 0;
         display: block;
         clear: both;
       }
+
+      /* 3. 末尾增加空元素进行clear */
+      /*.div3 {*/
+      /*  clear: both;*/
+      /*}*/
 
     </style>
 
@@ -32,6 +38,7 @@
   <body>
     <div class="div1 clearfix">
       <div class="div2"></div>
+<!--      <div class="div3"></div>-->
     </div>
 
   </body>

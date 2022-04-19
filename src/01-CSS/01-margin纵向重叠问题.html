@@ -10,6 +10,10 @@
         margin-top: 10px;
         margin-bottom: 15px;
       }
+
+      .div1 {
+        overflow: hidden;
+      }
     </style>
   </head>
   <body>
@@ -19,7 +23,11 @@
     <p></p>
     <p></p>
     <p></p>
-    <p>BBB</p>
+    <div class="div1">
+      <p>BBB</p>
+    </div>
+
+    <!-- 解决方法：给某一个p标签设置一个div 当作BFC 块级格式化上下文 -->
 
   </body>
 </html>
