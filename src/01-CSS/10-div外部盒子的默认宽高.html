@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+      .outer {
+        background-color: #ffcccc;
+      }
+
+      .inner {
+        width: 100px;
+        height: 100px;
+        background-color: #0000FF;
+      }
+
+    </style>
+
+  </head>
+  <body>
+
+    不给外部盒子设置宽高的时候，外部盒子的高度是由内部盒子撑开
+    默认宽度是auto
+
+    <div class="outer">
+      <div class="inner"></div>
+    </div>
+
+  </body>
+</html>

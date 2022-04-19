@@ -32,7 +32,9 @@ console.log(6)
 
 async function async1() {
   console.log('async1 start'); // 2
-  await async2();
+  await async2();                    // 意思： 先执行async2这个函数，然后再await这个async这个函数的执行结果
+  // await 后面的任务都放在一个异步任务队列中
+  // 放在微任务中
   console.log('async1 end'); // 6
 }
 async function async2() {
