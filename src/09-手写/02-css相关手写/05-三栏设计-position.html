@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>三栏设计-float+margin</title>
+    <style>
+      /*三栏布局中，使用position来处理*/
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .box {
+        position: relative;
+      }
+
+      .middle {
+        /*此处width不能设置为100%，因为100%会自动添加margin的值*/
+        width: auto;
+        height: 100vh;
+        /*设置margin-空白给左右元素填充*/
+        margin: 0 200px 0 200px;
+        background-color: green;
+      }
+
+      .left {
+        /*设置子元素的position*/
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 200px;
+        height: 100vh;
+        background-color: red;
+        /*opacity: 0;*/
+      }
+
+      .right {
+        /*设置子元素的position*/
+        position: absolute;
+        top:0;
+        right: 0;
+        width: 200px;
+        height: 100vh;
+        background-color: blue;
+        /*opacity: 0;*/
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="middle"></div>
+      <div class="left"></div>
+      <div class="right"></div>
+    </div>
+  </body>
+</html>

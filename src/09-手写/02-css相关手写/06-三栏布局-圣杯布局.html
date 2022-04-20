@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>三栏布局-圣杯布局</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .middle, .left, .right {
+        float: left;
+        height: 100vh;
+      }
+
+      .box {
+        margin: 0 300px 0 200px;
+      }
+
+      .middle {
+        /*此处要设置为100%*/
+        width: 100%;
+        background-color: green;
+      }
+
+      .left {
+        width: 200px;
+        background-color: red;
+        /*先设置相对定位-left负值为向左移动*/
+        position: relative;
+        left: -200px;
+        /*第二步，再margin-left设置为左侧*/
+        margin-left: -100%;
+        /*opacity: 0;*/
+      }
+
+      .right {
+        width: 300px;
+        background-color: blue;
+        /*先设置相对相对向右移动300px*/
+        position: relative;
+        left: 300px;
+        margin-left: -300px;
+        /*opacity: 0;*/
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="middle"></div>
+      <div class="left"></div>
+      <div class="right"></div>
+    </div>
+  </body>
+</html>

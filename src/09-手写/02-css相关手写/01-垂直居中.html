@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>垂直居中方法</title>
+    <style>
+      .box {
+        border: 1px solid #ccc;
+        height: 200px;
+      }
+
+      /*垂直居中方法一：给父盒子设置flex*/
+      .box1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /*垂直居中方法二：子元素宽高知道的情况*/
+      .box2 {
+        position: relative;
+      }
+
+      .box2 .item {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        left: 50%;
+        top:50%;
+        margin-left: -50px;
+        margin-top: -50px;
+      }
+
+      /*垂直居中方法三：子元素宽高未知情况一*/
+      .box3 {
+        position: relative;
+      }
+
+      .box3 .item {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      /*垂直居中方法四：子元素宽高未知情况二*/
+
+      .box4 {
+        position: relative;
+      }
+
+      .box4 .item {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="box box1">
+      <div class="item">
+        使用Flex实现居中
+      </div>
+    </div>
+
+    <div class="box box2">
+      <div class="item">
+        子盒子宽高已知
+      </div>
+    </div>
+
+    <div class="box box3">
+      <div class="item">
+        子盒子宽高未知1
+      </div>
+    </div>
+
+    <div class="box box4">
+      <div class="item">
+        子盒子宽高未知2
+      </div>
+    </div>
+
+
+  </body>
+</html>

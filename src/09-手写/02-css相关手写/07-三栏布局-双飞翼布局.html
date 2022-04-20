@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>三栏布局-双飞翼布局</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .middle-box, .left, .right {
+        float: left;
+      }
+
+      .middle-box {
+        width: 100%
+      }
+
+      .middle {
+        height: 100vh;
+        margin: 0 300px 0 200px;
+        background-color: green;
+      }
+
+      .left {
+        width: 200px;
+        height: 100vh;
+        background-color: red;
+        /*直接设置margin*/
+        margin-left: -100%;
+        /*opacity: 0;*/
+      }
+
+      .right {
+        width: 300px;
+        height: 100vh;
+        background-color: blue;
+        margin-left: -300px;
+        /*opacity: 0;*/
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="middle-box">
+        <div class="middle"></div>
+      </div>
+      <div class="left"></div>
+      <div class="right"></div>
+    </div>
+  </body>
+</html>

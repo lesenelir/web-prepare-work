@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>两栏设计flex</title>
+    <style>
+      /*两栏布局-使用flex来处理*/
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .box {
+        display: flex;
+      }
+
+      .left {
+        width: 200px;
+        height: 100vh;
+        background-color: #ffcccc;
+        opacity: 0;
+      }
+
+      .right {
+        width: 100%;
+        /*flex: 1;*/
+        height: 100vh;
+        background-color: #cccccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="left"></div>
+      <div class="right"></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>两栏设计BFC</title>
+    <style>
+      /*两栏布局使用BFC来处理*/
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .left {
+        float: left;
+        width: 200px;
+        height: 100vh;
+        background-color: #ffcccc;
+        opacity: 0;
+      }
+
+      .right {
+        /*设置BFC为单独的区域*/
+        width: auto;
+        overflow: hidden;
+        height: 100vh;
+        background-color: #cccccc;
+      }
+    </style>
+  </head>
+  <body>
+    <!--  不设置BFC 右侧的页面占据整个屏幕的宽度，所以要设置BFC为单独的区域  -->
+    <div class="box">
+      <div class="left"></div>
+      <div class="right"></div>
+    </div>
+  </body>
+</html>
