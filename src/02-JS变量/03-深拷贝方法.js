@@ -1,3 +1,37 @@
+/**
+ *
+ * Note： 深浅拷贝针对的是拷贝后的内容是引用类型的是地址还是完全复制了一份
+ *
+ * @type {[number, number, number[], {a: number}]}
+ */
+
+// 数组的拷贝
+let a1 = [1, 2, [3, 4], {a: 1}]
+let a2 = a1 // 直接赋值是 复制地址
+a1[0] = 0
+console.log(a2)
+
+let a3 = []
+for (const key in a1) {  // 此时的赋值的赋值的内容值 ，不能赋值引用类型
+  a3[key] = a1[key]
+}
+
+a1[1] = 99
+a1[3].a = 'kkk'
+console.log(a1)
+console.log(a3)
+
+// 数组的slice 和 concat 方法 可以实现浅拷贝
+let a4 = a1.slice()
+a1[3].a = 888  // 修改引用类型的值会改变新数组
+console.log(a4)
+
+let a5 = a1.concat()
+a4[1] = 777  // 修改值类型不会改变新数组
+a1[3].a = 555 // 修改引用类型的值会改变新数组
+console.log(a5)
+
+
 // 方法1： JSON.parse(JSON.stringify(obj))
 // JSON.stringify()  -  将一个obj对象转换成JSON字符串
 // JSON.parse()  -  将JSON字符串转换为obj对象
@@ -44,7 +78,7 @@ console.log(obj4)
 
 
 // ------------------------------
-// 手写深拷贝 
+// 手写深拷贝
 let person = {
   name: 'lesenelir',
   age: 18,

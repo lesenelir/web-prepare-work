@@ -4,7 +4,7 @@ function getType(data) {
   if (typeof data !== 'object') {
     return true
   } else {
-    return Object.prototype.toString.call(data).slice(1, 7)
+    return Object.prototype.toString.call(data).slice(8, -1).toLowerCase()
   }
 }
 

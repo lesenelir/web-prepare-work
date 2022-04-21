@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>匀速动画</title>
+
+    <style>
+
+      /** {*/
+      /*  margin: 0;*/
+      /*  padding: 0;*/
+      /*}*/
+
+      .box {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        border: 1px solid black;
+        background-color: #cccccc;
+        margin-top: 50px;
+      }
+
+    </style>
+
+  </head>
+  <body>
+    <button class="start">开始</button>
+    <button class="pause">暂停</button>
+    <button class="finish">结束</button>
+    <div class="box"></div>
+
+    <script>
+      /**
+       *  匀速框架
+       *    css3动画框架： transition 和 animation可以实现运动
+       *
+       *    如何让盒子运动起来
+       */
+      const startBtn = document.querySelector('.start')
+      const pauseBtn = document.querySelector('.pause')
+      const finishBtn = document.querySelector('.finish')
+      const box = document.querySelector('.box')
+
+      // 运行btn
+      let timer = null
+      startBtn.addEventListener('click', function () {
+        if (timer) clearInterval(timer) // 每次点击都关闭之前的定时器 防止加快速度
+
+        timer = setInterval(() => {
+          if (box.offsetLeft + box.offsetWidth > screen.width) {
+           clearInterval(timer) // 清除定时器
+          } else {
+            box.style.left = box.offsetLeft + 10 + 'px'
+          }
+        }, 24)
+      })
+
+      // 暂停btn
+      pauseBtn.addEventListener('click', function () {
+        if (timer) {
+          clearInterval(timer)
+        }
+      })
+
+      // 结束btn
+      finishBtn.addEventListener('click', function () {
+        if (timer) {
+          clearInterval()
+        }
+        box.style.left = 0
+      })
+    </script>
+
+  </body>
+</html>
