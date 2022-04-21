@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>两栏设计-position</title>
+
+    <style>
+
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .box {
+        position: relative;
+      }
+
+      .left {
+        /*left脱离文档流，right上移*/
+        position: absolute;
+        width: 200px;
+        height: 100vh;
+        background-color: #ffcccc;
+        /*opacity: 0;*/
+      }
+
+      .right {
+        margin-left: 200px;
+        width: auto;
+        height: 100vh;
+        background-color: #cccccc;
+      }
+
+
+    </style>
+
+  </head>
+  <body>
+    <div class="box">
+      <div class="left"></div>
+      <div class="right"></div>
+    </div>
+  </body>
+</html>
