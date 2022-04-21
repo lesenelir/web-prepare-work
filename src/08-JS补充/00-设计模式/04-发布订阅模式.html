@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+
+    <script>
+      /**
+       *  发布订阅模式： 使用一个第三方店员的身份来监听消息
+       *
+       *  构造函数包括：
+       *   - 属性： 消息队列 ， 比如： click: [fn1, fn2, fn3]  abc: [fn1, fn2]
+       *   - 方法： 能向消息队列添加内容
+       *   - 方法： 删除消息队列里的内容
+       *   - 方法： 触发消息队列里的内容
+       */
+
+      class Observer {
+        constructor() {
+          this.message = {} //  消息队列是一个对象
+        }
+
+        // 向消息队列添加内容
+        /**
+         *
+         * @param type 记录的行为
+         * @param fn 行为发生所要做的事情
+         */
+        on(type, fn) {
+          // 判断message里有没有这个行为已经被注册过；没被注册则赋值这个行为，注册过了，则直接向数组中添加
+          // 如果message没有这个属性， 则设置为一个新的数组
+          if (!this.message[type]) {
+            this.message[type] = []
+          }
+          this.message[type].push(fn)
+        }
+
+        // 向消息队列删除内容  - (删除有两种清空，分别为fn存在和不存在的清空， 存在则删除某一个函数，不存在则清空整个数组)
+        off(type, fn) {
+          // 如果fn不存在
+          if (!fn) { // fn 不存在，则清空数组内的所有触发事件函数
+            // 直接删除这个type属性
+            delete  this.message[type]
+            return
+          }
+          // fn 存在
+          // 判断你是不是真的订阅过
+          if (!this.message[type]) return
+          this.message[type] = this.message[type].filter(item => item !== fn)
+        }
+
+        // 触发消息队列
+        emit(type) {
+          // 判断是否真的有订阅过
+          if (!this.message[type]) return
+          // 真的订阅过，则触发执行里面的函数
+          this.message[type].forEach(item => {
+            item()
+          })
+        }
+
+      }
+
+      const person1 = new Observer()
+
+      // 拜托 第三方person1 帮忙观察一些内容
+      // 当某一个行为出现 告诉你应该干什么
+      person1.on('事件类型1', handleA)
+      person1.on('事件类型1', handleB)
+      person1.on('事件类型1', handleC)
+      person1.on('事件类型2', handleB)
+      person1.on('事件类型2', handleD)
+
+
+      // 告诉person1 某个事件类型不用你管了
+      // 1. 某个事件类型的事件数组里的触发事件全部清空  -  person('事件类型1')
+      // 2. 某个事件类型的事件数组里的某个触发事件函数  -  person('事件类型1', handleB)
+      person1.off('事件类型2')
+      person1.off('事件类型1', handleC)
+
+
+      // 一旦触发person某个事件类型的type，就要把后面所有的事件处理函数执行掉
+      person1.emit('事件类型1')
+
+      console.log(person1)
+
+      function handleA() {console.log('A')}
+      function handleB() {console.log('B')}
+      function handleC() {console.log('C')}
+      function handleD() {console.log('D')}
+
+
+    </script>
+
+  </body>
+</html>

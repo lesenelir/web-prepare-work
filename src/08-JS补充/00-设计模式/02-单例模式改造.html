@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <script>
+      /**
+       *  单例模式改造：
+       *    需要把instance变量保存下来
+       *    singleTon 是一个函数，里面可以判断 可以返回
+       *    以闭包的形式来执行一段代码
+       *    为了保存构造函数，把构造函数也写在闭包里
+       *    如果想new 就直接写
+       *
+       */
+
+      const Person = (function () { // Person 是由 singleTon改为Person
+
+        function Person(name, age) {
+          this.name = name
+          this.age = age
+        }
+
+        let instance = null // 该变量就因为闭包保持的原因，会一直存在，不会被销毁
+        return function (...args) {
+          if (!instance)  instance = new Person(...args)
+          return instance
+        }
+
+      })()
+
+      const p1 = Person('jack', 18)
+      const p2 = new Person() // new 参数可写 可 不写
+
+      console.log(p1, p2, p1 === p2)
+
+    </script>
+  </body>
+</html>

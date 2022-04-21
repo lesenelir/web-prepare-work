@@ -11,3 +11,5 @@ function getType(data) {
 console.log(Object.prototype.toString()) // [object Object]
 
 
+console.log(Array.prototype.toString.call([1,2,3]))  // 原型链
+

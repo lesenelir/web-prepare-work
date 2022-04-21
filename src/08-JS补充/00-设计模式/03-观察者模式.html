@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+
+    <script>
+      /**
+       *  观察者模式分为： 观察者和被观察者；
+       *
+       *  观察者模式主要用来：观察者模式监控一个对象的状态，被观察者一旦状态发生改变，观察者模式则触发技能（函数）
+       *
+       *  观察者：
+       *    身份证明 + 触发技能（函数）
+       *
+       *  被观察者：
+       *     - 属性，自己的状态
+       *     - 队列，记录都有谁观察自己， 数组[]
+       *     - 方法，能设置自己的状态，当我需要改变的时候，要触发这个方法改变状态
+       *     - 方法，添加观察者
+       *     - 方法，删除观察者
+       *
+       */
+
+        // 一、观察者
+      class Observe {
+        constructor(name, fn) {
+          this.name = name
+          this.fn = fn
+        }
+      }
+
+      // 创建观察者
+      const p1 = new Observe('班主任', () => {
+        console.log('监控学生')
+      })
+      const p2 = new Observe('校长', () => {
+        console.log('监控班主任')
+      })
+
+      // 二、被观察者
+      class Subject {
+        constructor(state) {
+          this.state = state
+          this.observers = [] // 实例的观察者对象数组
+        }
+
+        // 设置自己的状态
+        setState(val) {
+          this.state = val
+          this.observers.forEach(item => { // 状态改变 则依次触发观察者的技能
+            item.fn()
+          })
+        }
+
+        // 添加观察者
+        addObserver(obs) {
+          const flag = this.observers.some(item => item === obs) // 判断数组中是否有观察者
+          if (!flag) { // false 则没有观察者，则添加观察者到数组中
+            this.observers.push(obs)
+          }
+        }
+
+        // 删除观察者
+        delObserver(obs) {
+          this.observers = this.observers.filter(item => item !== obs)
+        }
+      }
+
+      // 创建被观察者
+      const xiaoming = new Subject('学习')
+      xiaoming.addObserver(p1) // 添加观察者
+      xiaoming.addObserver(p2)
+      xiaoming.setState('打游戏') // 状态改变则触发观察者的函数
+      console.log(xiaoming)
+
+    </script>
+
+  </body>
+</html>

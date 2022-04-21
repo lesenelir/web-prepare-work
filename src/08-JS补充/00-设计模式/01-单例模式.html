@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+
+    <script>
+      /**
+       *  单例模式： 只有一个实例
+       *    一个构造函数一生只有一个实例 ， 不管new多少次，都只有一个实例
+       *
+       *  应用：
+       *    弹出层
+       *    结构： div > xxx 默认隐藏，一定条件下显示
+       *    实现： 每次显示都是一个新的div 还是 一个div来回显示
+       *
+       *  单例模式核心代码：
+       *    let instance = null
+       *    function singleTon() {
+       *      if (!instance) instance = 实例
+       *      return instance
+       *    }
+       *
+       */
+
+
+      function Person() {
+        this.name = 'jack'
+      }
+
+      let instance = null
+      function singleTon() {
+        if (!instance) instance = new Person()
+        return instance
+      }
+
+      const p1 = new singleTon()
+      const p2 = new singleTon()
+
+      console.log(p1, p2, p1 === p2)
+
+    </script>
+
+  </body>
+</html>
