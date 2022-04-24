@@ -18,3 +18,10 @@ function debounce(fn, delay) {
 
 
 // Note: 防抖和节流都是需要绑定事件的，所以需要返回一个函数，且里面需要一个函数
+
+// debounce 中的参数fn 是要监听的事件
+
+
+let btn
+
+btn.addEventListener('click', debounce(fn, 1000))

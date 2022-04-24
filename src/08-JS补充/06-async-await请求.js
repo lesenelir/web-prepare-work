@@ -26,27 +26,28 @@ function Three() {
 //   // 要让Two执行完之后才让Three往下执行
 //   console.log(Three())
 // }
-
-// 方法一
-// function Fn() {
-//   console.log(One())
-//   const data = Two()
-//   data.then(value => {
-//     console.log(value)
-//     console.log(Three())
-//   })
-// }
-//
 // Fn()
 
-// 方法二
-async function fn() {
+// 方法一
+function Fn() {
   console.log(One())
-  console.log(await Two())
-  console.log(Three())
+  const data = Two()
+  data.then(value => {
+    console.log(value)
+    console.log(Three())  // 把第三个执行的函数放在异步调用的后面执行
+  })
 }
 
-fn()
+Fn()
+
+// 方法二
+// async function fn() {
+//   console.log(One())
+//   console.log(await Two()) // 直接await等待执行，后面的代码等待执行
+//   console.log(Three())
+// }
+//
+// fn()
 
 // await 会阻塞后面的代码
 

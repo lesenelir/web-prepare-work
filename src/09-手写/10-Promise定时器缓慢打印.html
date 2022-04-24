@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+
+    <script>
+
+      // 需求： 一秒 之后打印done
+      function wait(time) {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve()
+          }, time)
+        })
+      }
+
+      wait(1000).then(
+          () => {
+            console.log( 'done')
+          }
+      )
+
+      //
+
+      var data = []
+
+      function fn() {
+        return function () {
+          for (let i = 0; i < 3; i++) {
+            data[i] = i
+          }
+        }
+      }
+      let myFun = fn()
+
+      data[0] = myFun()
+      data[1] = myFun()
+      data[2] = myFun()
+
+      console.log(data[2])
+
+    </script>
+
+  </body>
+</html>

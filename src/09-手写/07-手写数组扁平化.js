@@ -12,6 +12,14 @@ function flatten(arr) {
   return res
 }
 
+// 方法2： 使用reduce方法实现数组扁平化
+function flattenTwo(arr) {
+  return arr.reduce((acc, item) => {
+
+  }, [])
+}
+
+
 
 console.log(Object.prototype.toString())
 

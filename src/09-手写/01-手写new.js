@@ -14,3 +14,11 @@ function myNew(Func, ...args) {
 
 // Note: 如果new过程的函数 ， 返回一个对象，则函数执行时this指向返回的对象
 
+
+function Person(name, age) {
+  this.name = name
+  this.age = age
+}
+
+let p = myNew(Person, 'lee', 19)
+console.log(p)

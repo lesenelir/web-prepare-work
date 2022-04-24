@@ -30,3 +30,10 @@ function getType(data) {
 console.log(Object.prototype.toString.call([]))
 console.log(getType([]))
 console.log(getType(new Error))
+
+
+let obj = {}
+console.log(obj.toString())
+
+// Note: 对于 Object 对象，直接调用 toString() 就能返回 [Object Object]
+// 而对于其他对象，则需要通过 call / apply 来调用才能返回正确的类型信息。

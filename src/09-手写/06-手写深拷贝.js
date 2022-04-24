@@ -6,7 +6,7 @@
  * @param obj
  */
 function deepClone(obj) {
-  if (typeof obj !== 'object' || typeof obj === null) {
+  if (typeof obj !== 'object' || obj === null) {
     return obj
   }
 

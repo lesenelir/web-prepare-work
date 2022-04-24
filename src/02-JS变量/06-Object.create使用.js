@@ -16,3 +16,9 @@ console.log(x.__proto__ === Person.prototype)
 let p1 = new Person('lee', 18)
 console.log(p1)
 console.log(p1.toString()) // [object Object]
+
+// Note:
+
+// Object.create(a, b) 有两个属性，第一个属性是必须的，第二个属性是可选的
+// 第一个参数是新建对象的原型对象   - 即 x.__proto__ = 第一个参数
+// 第二个参数是新创建实例对象上的属性 - 即 x的属性是第二个参数

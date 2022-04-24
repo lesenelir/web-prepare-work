@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+
+    <input type="submit" value="提交" id="submit">
+
+    <script>
+      const mySubmit = document.querySelector('#submit')
+
+      function subFn(e) {
+        console.log(e)
+        console.log(this)
+        // console.log(this === e.target)  // true 监听函数中的this 就是事件对象的target的属性值
+      }
+
+      // mySubmit.addEventListener('click', subFn)
+
+      // 防抖函数，一段事件内频繁触发，只执行最后一次
+      function debounce(fn, delay) {
+        // 防抖函数最后也是返回一个函数
+        let timer = null
+        return function () { // return function(e)  // 事件对象在这里获得
+          // console.log(e) // === arguments[0]
+          // console.log(this)
+          if (timer) {
+            clearTimeout(timer)
+          }
+          timer = setTimeout(() => {
+            // fn()
+            fn.apply(this, arguments)
+          }, delay)
+        }
+      }
+
+      // mySubmit.addEventListener('click', debounce(subFn, 1000))
+
+
+      /**
+       * 节流：
+       *    一段时间内，频繁触发某一次事件的时候，按照事件依次执行
+       *
+       */
+
+      function throttle(fn, delay) {
+        let timer = null
+        return function () {
+          if (!timer) {
+            timer = setTimeout(() => {  // 阀门打开
+              fn.apply(this, arguments)
+              timer = null // 阀门关闭
+            }, delay)
+          }
+        }
+      }
+      mySubmit.addEventListener('click', throttle(subFn, 1000))
+
+    </script>
+
+
+  </body>
+</html>

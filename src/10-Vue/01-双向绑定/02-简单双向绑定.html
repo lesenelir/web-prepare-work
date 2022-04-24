@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>双向绑定-简单版</title>
+  </head>
+  <body>
+
+    <input type="text" id="myInput">
+    <p id="myP"></p>
+
+    <script>
+      // Object.defineProperty()
+      let obj = {}
+      Object.defineProperty(obj, 'key', {
+        get() {
+          console.log('trigger get')
+        },
+        set(n) {
+          // console.log(n)
+          // document.getElementById('myInput').value = n
+          document.getElementById('myP').innerHTML = n
+        }
+      })
+
+
+      document.addEventListener('keyup', fn)
+      function fn(e) {
+        // e.target是事件对象的标签
+        // console.log(e.target)
+        // 通过Object.defineProperty 写入时触发
+        obj.key = e.target.value
+      }
+
+    </script>
+
+  </body>
+</html>
