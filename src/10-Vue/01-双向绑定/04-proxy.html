@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Proxy</title>
+  </head>
+  <body>
+    <script>
+      // proxy ES6 构造函数
+
+      // defineProperty 劫持数据 -> 给对象进行扩展 -> 对属性进行设置
+
+      // proxy 返回一个代理对象
+      // let obj = new Proxy(target, handler)
+      // target 目标对象 - 要处理的对象 （一定要是个完整的对象，不能是空对象）
+      // handler 容器 - 无数可以处理对象属性的方法 (类似于defineProperty第三个参数)
+
+      // Note： proxy作用：自定义对象属性的获取、赋值、枚举、函数调用等功能
+
+      let target = {
+        a: 1,
+        b: 2
+      }
+
+      let proxy = new Proxy(target, {
+        get(target, p, receiver) {
+          return 'This is property value ' + target[p]
+        },
+        set(target, p, value, receiver) {
+          target[p] = value
+          console.log('change value ' + target[p])
+        }
+      })
+      console.log(proxy.a)
+      proxy.a = 3 // 修改跳转到set方法
+      console.log(target)
+      console.log(proxy)
+      // 生成一个代理对象proxy 去代理原先的target对象
+
+      // -------------------------------------------------
+      let fn = function () {
+        console.log('i am function')
+      }
+      fn.a = 123
+      let fnProxy = new Proxy(fn, {
+        get(target, p, receiver) {
+          return target[p] + ' This is a proxy return'
+        }
+      })
+      console.log(fnProxy.a)
+
+      // proxy 可以处理 对象、函数、数组
+
+
+    </script>
+  </body>
+</html>

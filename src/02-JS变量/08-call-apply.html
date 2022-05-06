@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>call-apply</title>
+  </head>
+  <body>
+
+    <script>
+      let obj = {
+        name: 'lee'
+      }
+
+      function addAge(age) {
+        this.age = age
+        console.log(this)
+      }
+
+      // console.log(addAge(12))
+      addAge.call(obj, 20)
+
+      // 手动实现call
+      Function.prototype.newCall = function (context = {}, ...args) {
+        // 将函数设为对象的属性（方法）
+        context.attribute = this
+        // 执行该函数
+        context.attribute(...args)
+        // 删除属性
+        delete context.attribute
+      }
+      addAge.newCall(obj, 30)
+
+    </script>
+
+  </body>
+</html>

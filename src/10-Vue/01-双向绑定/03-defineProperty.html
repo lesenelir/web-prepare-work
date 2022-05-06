@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Object.defineProperty</title>
+  </head>
+  <body>
+    <script>
+      // Object.defineProperty 定义属性
+      // 第一个参数：对象 - 该对象一定要是一个空对象，即使有其他属性key，那也忽略这些key
+      // 第二个参数：属性名
+      // 第三个参数：描述信息
+
+      function defineProperty() {
+        let _obj = {}
+        Object.defineProperty(_obj, 'a', {
+          value: 1
+          // value: 1, // 属性值
+          // writable: true, // 可修改
+          // enumerable: true, // 可枚举
+          // configurable: true // 可配置 （一般都是删除属性操作）
+        })
+        return _obj
+      }
+      let obj = defineProperty()
+      console.log(obj)
+      obj.a = 5
+      console.log(obj.a) // 1    - 属性值不可修改
+      delete obj.a
+      console.log(obj.a)  // - 属性不可删除
+
+      // Note: Object.defineProperty 定义的属性不可修改、不可删除、不可枚举
+
+      // -------------------------------------------------------
+
+      // 每一个属性定义的时候 都会有 getter setter 机制
+      function defineProperty2() {
+        let _obj = {}
+        Object.defineProperty(_obj, 'a', {
+          // value: 1, //【报错】
+          // writable: true, // 【报错】
+          get() {
+            return 'a\'s value'
+          },
+          set(newValue) {
+            console.log('The value of a has been designed a new Value: '+ newValue)
+          }
+        })
+        return _obj
+      }
+      let obj2 = defineProperty2()
+      // 读取时触发get
+      console.log(obj2.a)
+      // 设置时触发set
+      obj2.a = 1
+      // 数据劫持： 比如访问obj2.a 应该访问对象的属性值，但是劫持 去访问get中的内容
+      //          比如修改obj2.a 中的内容，数据劫持 去执行set中的内容
+      // Note： Object.defineProperty 中定义了get set 不可以同时定义 value 和 writable
+
+
+      // -------------------------------------------------------
+
+
+
+
+
+
+    </script>
+  </body>
+</html>

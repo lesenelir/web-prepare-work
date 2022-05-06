@@ -15,6 +15,7 @@ let a3 = []
 for (const key in a1) {  // 此时的赋值的赋值的内容值 ，不能赋值引用类型
   a3[key] = a1[key]
 }
+console.log(a3)
 
 a1[1] = 99
 a1[3].a = 'kkk'

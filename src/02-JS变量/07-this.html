@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>JS中的this</title>
+  </head>
+  <body>
+    <script>
+      // this 取决于所在函数被调用的方式
+
+      // 1. 当this所在的函数被一个对象的方法调用时
+      let obj = {
+        name: 'obj',
+        func: function () {
+          console.log(this)
+        }
+      }
+      obj.func()
+
+      // 2. 当this所在的函数，被一个作为一个函数调用的时候
+      function fn() {
+        console.log(this) // window
+      }
+      fn()
+
+      // 3. 面向对象编程：
+      // this 所在的函数是一个构造器函数
+      function Person(name) {
+        this.name = name
+        console.log(this) // 指向所在的实例
+      }
+      let person1 = new Person('lee')
+      console.log(person1.name)
+
+      // 4. call apply bind
+      let o = {
+        birth: 1997,
+        now: 2022,
+        age: function () {
+          console.log(this.now - this.birth)
+        }
+      }
+      o.age() // this 指向object
+
+      o.age.call({now: 0, birth: 0})
+      o.age.call({now: 0, birth: 0})
+
+
+      // Note: this 实质指向的是一个对象
+    </script>
+  </body>
+</html>

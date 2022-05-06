@@ -17,7 +17,7 @@ async function async2() {
     return data;
   });
 }
-async1().then((data) => {
+async1().then((data) => { // 此时就已经执行了async1()
   console.log("6");
   console.log(data);
 });

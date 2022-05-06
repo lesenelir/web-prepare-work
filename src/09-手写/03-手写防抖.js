@@ -25,3 +25,15 @@ function debounce(fn, delay) {
 let btn
 
 btn.addEventListener('click', debounce(fn, 1000))
+
+function debounce2(fn, delay) {
+  let timer = null
+  return function () {
+    if (timer) {
+      clearTimeout(timer)
+    }
+    timer = setTimeout(() => {
+      fn()
+    }, delay)
+  }
+}

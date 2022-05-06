@@ -1,33 +1,33 @@
-// async 中 对于 await rejected内容要用 try catch
-async function fn() {
-  const data = Promise.reject(1)
-  try {
-    const p = await data
-    console.log(p)
-  } catch (e) {
-    console.log('error:', e)
-  }
-}
-
-fn()
-
-
-console.log(1)
-async function test() {
-  console.log(2)
-  const data = await new Promise((resolve) => {resolve(3)})
-  console.log(data)
-  console.log(4)
-}
-
-test()
-setTimeout(() => {
-  console.log(5)
-}, 1000)
-
-console.log(6)
-
-// 1 2 6 3 4 5
+// // async 中 对于 await rejected内容要用 try catch
+// async function fn() {
+//   const data = Promise.reject(1)
+//   try {
+//     const p = await data
+//     console.log(p)
+//   } catch (e) {
+//     console.log('error:', e)
+//   }
+// }
+//
+// fn()
+//
+//
+// console.log(1)
+// async function test() {
+//   console.log(2)
+//   const data = await new Promise((resolve) => {resolve(3)})
+//   console.log(data)
+//   console.log(4)
+// }
+//
+// test()
+// setTimeout(() => {
+//   console.log(5)
+// }, 1000)
+//
+// console.log(6)
+//
+// // 1 2 6 3 4 5
 
 
 async function async1() {

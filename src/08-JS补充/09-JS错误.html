@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>JS错误</title>
+  </head>
+  <body>
+    <script>
+      // 1. Error 函数对象
+      // const error = new Error('一个错误')
+      // console.log(error)
+
+      // 2. JS运行时自带的报错功能（错误检测机制）
+      // console.log(a)
+
+      // 3. throw 手动抛出错误信息 ， 终止程序
+      // throw 'random Error'
+
+      // 4. try catch (只允许去处理同步的代码错误)
+      // try catch 允许错误，并且后面的代码可以执行
+      // try {
+      //   throw 'sad'
+      // } catch (e) {
+      //   console.log(e)
+      // }
+      // console.log('后面的代码')
+
+      // 5. 异步编程的错误处理
+      // promise 编程 - .then 的第二个callback reason 抓出错误
+      // 【重要】 promise的错误只能被被then的第二个参数捕获到，或者是被catch捕获
+      try {
+        // 返回一个rejected的promise对象
+        Promise.reject(1).catch((reason) => {
+          console.log('reason', reason)
+        })
+      } catch (error) {
+        console.log('error', error)
+      }
+      // 此时的try catch 约等于没有写
+
+      // 6. async await 处理错误的方式
+      // 想用 try catch 捕获异步的代码的异常 用 async await
+      async function fn() {
+        try {
+          await Promise.reject(2)
+        } catch (error) {
+          console.log('error: ', error)
+        }
+      }
+      fn()
+      // try catch 捕获 promise 错误的异常可以用await
+      // 原因： 使用了await 会阻塞后面的代码执行，只有把这一行代码执行完后才会执行下面的代码
+
+      async function fn2() {
+        try {
+          await Promise.reject(3).catch((reason) => {
+            console.log('reason', reason)
+          })
+        } catch (error) {
+          console.log('error: ', error)
+        }
+      }
+      fn2()
+
+      // Note: try catch 捕获异常 一定要在该try catch 线程内捕获到同步异常
+      // try catch 可以使用 await 捕获 promise 的异常
+
+
+    </script>
+  </body>
+</html>
